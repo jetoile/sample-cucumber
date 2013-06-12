@@ -8,14 +8,15 @@ import fr.jetoile.demo.breizhcamp.Calculator;
 import fr.jetoile.demo.breizhcamp.webapp.page.HomePage;
 import fr.jetoile.demo.breizhcamp.webapp.page.ResultPage;
 import org.fluentlenium.core.annotation.Page;
-import org.fluentlenium.cucumber.adapter.FluentCucumberAdapter;
-import org.fluentlenium.cucumber.adapter.util.SharedDriver;
+import org.fluentlenium.cucumber.adapter.FluentCucumberTest;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fluentlenium.core.filter.FilterConstructor.withText;
 
 
-public class MultiBrowserStep extends FluentCucumberAdapter {
+public class MultiBrowserStep extends FluentCucumberTest {
     private BrowserInitialStep initialStep;
 
     @Page
@@ -35,8 +36,8 @@ public class MultiBrowserStep extends FluentCucumberAdapter {
         this.initFluentWithWebDriver(initialStep).withDefaultUrl("http://localhost:8080/sample-cucumber-webapp");
         this.initTest();
 
-        homePage.fill("#arg1").with(Integer.toString(arg1));
-        homePage.fill("#arg2").with(Integer.toString(arg2));
+        fill("#arg1").with(Integer.toString(arg1));
+        fill("#arg2").with(Integer.toString(arg2));
     }
 
     @Given("^an instance of (CalculatorImpl2|CalculatorImpl1) is used for multi$")
@@ -62,7 +63,7 @@ public class MultiBrowserStep extends FluentCucumberAdapter {
         this.initFluentWithWebDriver(initialStep).withDefaultUrl("http://localhost:8080/sample-cucumber-webapp");
         this.initTest();
 
-        homePage.submit("form").await().untilPage(resultPage);
+        submit("form").await().untilPage(resultPage);
         resultPage.isAt();
 
         assertThat(resultPage.getResult()).isEqualTo(arg1);

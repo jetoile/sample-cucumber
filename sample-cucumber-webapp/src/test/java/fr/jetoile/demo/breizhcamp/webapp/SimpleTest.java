@@ -35,7 +35,7 @@ public class SimpleTest extends FluentTest {
         goTo(homePage);
         homePage.isAt();
 
-        homePage.submit("form").await().untilPage();
+        submit("form").await().untilPage(resultPage);
         resultPage.isAt();
 
         assertThat(resultPage.getResult()).isEqualTo(3);

@@ -9,8 +9,8 @@
 </h1>
 
 <form action="result" method="post">
-    <input type="number" name="arg1" id="arg1" value="1">
-    <input type="number" name="arg2" id="arg2" value="2">
+    <input type="text" name="arg1" id="arg1" value="1">
+    <input type="text" name="arg2" id="arg2" value="2">
     <select name="select">
         <option value="calculatorImpl1">calculatorImpl1</option>
         <option value="calculatorImpl2">calculatorImpl2</option>

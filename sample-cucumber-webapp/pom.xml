@@ -27,6 +27,13 @@
         </dependency>
 
         <dependency>
+            <groupId>com.github.detro.ghostdriver</groupId>
+            <artifactId>phantomjsdriver</artifactId>
+            <version>1.0.3</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.fluentlenium</groupId>
             <artifactId>fluentlenium-cucumber</artifactId>
             <scope>test</scope>

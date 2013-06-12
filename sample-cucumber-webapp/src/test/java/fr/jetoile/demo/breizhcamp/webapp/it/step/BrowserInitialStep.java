@@ -15,15 +15,14 @@ package fr.jetoile.demo.breizhcamp.webapp.it.step;
 
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
-import org.fluentlenium.cucumber.adapter.FluentCucumberAdapter;
-import org.fluentlenium.cucumber.adapter.driver.SupportedWebDriver;
-import org.fluentlenium.cucumber.adapter.driver.WebDriverFactory;
+import fr.jetoile.demo.breizhcamp.webapp.driver.SupportedWebDriver;
+import fr.jetoile.demo.breizhcamp.webapp.driver.WebDriverFactory;
+import org.fluentlenium.cucumber.adapter.FluentCucumberTest;
 import org.fluentlenium.cucumber.adapter.exception.UnsupportedDriverException;
-import org.fluentlenium.cucumber.adapter.util.SharedDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class BrowserInitialStep extends FluentCucumberAdapter {
+public class BrowserInitialStep extends FluentCucumberTest {
 
     @Given(value = "I use browser ([^ ]*) with ([^ ]*)")
     public void init(String browser, String parametersCmd) throws UnsupportedDriverException {

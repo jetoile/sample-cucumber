@@ -11,15 +11,19 @@ import fr.jetoile.demo.breizhcamp.CalculatorImpl2;
 import fr.jetoile.demo.breizhcamp.webapp.page.HomePage;
 import fr.jetoile.demo.breizhcamp.webapp.page.ResultPage;
 import org.fluentlenium.core.annotation.Page;
-import org.fluentlenium.cucumber.adapter.FluentCucumberAdapter;
+import org.fluentlenium.cucumber.adapter.FluentCucumberTest;
 import org.fluentlenium.cucumber.adapter.util.SharedDriver;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fluentlenium.core.filter.FilterConstructor.withText;
 
 
 @SharedDriver(type = SharedDriver.SharedType.PER_SCENARIO)
-public class SimpleStep extends FluentCucumberAdapter {
+public class SimpleStep extends FluentCucumberTest {
 
     @Page
     private HomePage homePage;
@@ -33,6 +37,12 @@ public class SimpleStep extends FluentCucumberAdapter {
     public String getDefaultBaseUrl() {
         return "http://localhost:8080/sample-cucumber-webapp";
     }
+
+//    @Override
+//    public WebDriver getDefaultDriver() {
+//        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
+//        return new ChromeDriver();
+//    }
 
     @Given("^an instance of (CalculatorImpl2|CalculatorImpl1) is used$")
     public void an_instance_of_CaculatorController_is_used(String calculatorInstance) throws Throwable {
@@ -57,8 +67,8 @@ public class SimpleStep extends FluentCucumberAdapter {
         this.initFluent();
         this.initTest();
 
-        homePage.fill("#arg1").with(Integer.toString(arg1));
-        homePage.fill("#arg2").with(Integer.toString(arg2));
+        fill("#arg1").with(Integer.toString(arg1));
+        fill("#arg2").with(Integer.toString(arg2));
     }
 
 
@@ -67,7 +77,7 @@ public class SimpleStep extends FluentCucumberAdapter {
         this.initFluent();
         this.initTest();
 
-        homePage.submit("form").await().untilPage();
+        submit("form").await().untilPage();
         resultPage.isAt();
 
         assertThat(resultPage.getResult()).isEqualTo(arg1);
