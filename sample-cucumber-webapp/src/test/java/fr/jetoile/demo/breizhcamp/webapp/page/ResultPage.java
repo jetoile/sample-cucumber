@@ -12,7 +12,7 @@ public class ResultPage extends FluentPage {
 
     @Override
     public void isAt() {
-        assertThat(title().contains("Result Page"));
+        assertThat(title()).containsIgnoringCase("result");
     }
 
     public int getResult() {

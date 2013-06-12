@@ -12,6 +12,6 @@ public class HomePage extends FluentPage {
 
     @Override
     public void isAt() {
-        assertThat(title()).contains("Home Page");
+        assertThat(title()).containsIgnoringCase("home");
     }
 }
